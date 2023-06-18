@@ -1,0 +1,21 @@
+//TYPE BELOW COMMANDS IN CMD 
+
+//to check aws is installed or not 
+
+> aws --version 
+
+//if aws is not installed to login via CLI you need to download AWS CLI.
+● Link to Download AWS CLI :- https://awscli.amazonaws.com/AWSCLIV2.msi
+● Install the software.
+
+//aws configure this command will help you to log in via CLI into AWS, you need to provide an access key and secret key 
+>aws configure 
+>aws help
+>aws ec2 help
+>aws ec2 run-instances help
+
+//to launch an instance 
+>aws ec2 run-instances --image-id ami-057752b3f1d6c4d6c --instance-type t2.micro --key-name ssh_os --count 1 
+
+//to stop the instace 
+>aws ec2 stop-instances --instance-ids i-0202ea59ea883c0f9
