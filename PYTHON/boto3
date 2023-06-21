@@ -1,0 +1,12 @@
+import boto3 
+my_ec2 = boto3.resource("ec2")
+print(my_ec2)
+response=my_ec2.create_instances(
+        ImageId='ami-057752b3f1d6c4d6c',
+        InstanceType='t2.micro',
+        MaxCount=1,
+        MinCount=1
+    )
+print(response) #using id we can find all detials about this instance  
+print(response[0])
+print(response[0].id)
