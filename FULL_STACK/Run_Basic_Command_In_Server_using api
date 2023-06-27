@@ -1,0 +1,71 @@
+//always configure your  firewall security 
+
+cd /var/www/html
+ls
+
+cat >index.html 
+i am home 
+
+cd /var/www/cgi-bin
+ls
+systemctl start httpd 
+
+
+cmd.py 
+#! usr/bin/python 
+import subprocess
+import cgi 
+
+print("content -type  :text/html ")
+print()
+
+form = cgi.FieldStorage()
+cmd = form.getValue("c")
+
+output = subprocess.getoutput(cmd)
+print("<pre>" + output+ " </pre>" )
+
+
+curl -X GET http://ip/cgi-bin/cmd.py?c=date  
+//using curl command get method and query string we are running command in our surver 
+
+every  api has own work ,agr apko apne endpoint ya api tak jaana hai kaafi ways hai 1st: curl cmd ke through query string and 2nd through form 
+
+
+cd /var/www/html
+
+<form method =GET action =" http://ip/cgi-bin/cmd.py " >
+Enter ur cmd </input name=c>
+</br>
+<input type=submit>
+</form>
+
+u can only run basic command through this not advance i.e system level or root level not possible : 
+
+client -->request---->webserver (program/process) 
+
+every process ahs its own process/privelage/depends on which account it is connected and run because of power . 
+eg. in linux 
+systemctl status httpd  //apache program is running in bg 
+ps -aux (show u all process name ) //will show http name process run due to apache user power 
+
+that is why due to pache user u are doing limited tasks . as due to apache webserver only our program is running in background, as it has limited power so u cannot do advance .
+
+give whoami in your form u will get apache . 
+to do some adavnce work u have to give extra power to user . 
+we have sudo i.e vim etc/sudoers
+
+apache ALL=(ALL) NOPASSWD:ALL
+
+
+now run advance commands like useradd  in form : but it is advance comamnd so add sudo in beggining 
+
+in cat/etc/passwd u cansee new account is created 
+
+
+now we have to put sudo again nd again so directly add sudo in python file 
+output = subprocess.getoutput("sudo " + cmd) 
+
+//so u can launch docker and start docker and see iamge and launch in background and check 
+
+task : create a app in mobile phone to launch docker . 
