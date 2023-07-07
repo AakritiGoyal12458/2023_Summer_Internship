@@ -1,0 +1,31 @@
+STEP 1 ---> create EC2 instace with AMAZON LINUX AMI
+STEP 2 ---> Now using SSH connect it with windows or you can even run directlt on AWS CONSOLE TOO. 
+
+sudo su - 
+yum install docker
+systemctl start docker
+systemctl status docker 
+
+touch Dockerfile 
+vi Dockerfile
+
+
+FROM centos:7
+
+RUN yum install httpd -y
+RUN echo welcome >/var/www/html/index.html
+RUN yum install net-tools -y
+
+CMD ["/usr/sbin/httpd","-DFOREGROUND"]
+
+docker build -t image_name . 
+docker images
+docker run -dit image_name:version 
+docker ps 
+
+docker inspect container_name
+
+#copy its "IPAddress": "172.17.0.3",
+curl ip_address 
+
+output is visible 
