@@ -29,3 +29,17 @@ docker inspect container_name
 curl ip_address 
 
 output is visible 
+
+Steps to create an Amazon ECR repository:
+
+1. Sign in to the AWS Management Console.
+2. Search for "ECR" or locate it in the "Compute" section.
+3. Click "Create repository".
+4. Provide a unique name and optional description for the repository.
+5. Choose encryption settings.
+6. Configure repository permissions.
+7. Optionally, set up lifecycle rules.
+8. Review the settings and click "Create repository".
+9. Start pushing container images to the repository.
+
+That's it! You've created an Amazon ECR repository.
