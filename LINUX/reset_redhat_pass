@@ -1,0 +1,57 @@
+Commands that correspond to each step in the procedure:
+
+1. Reboot the system and interrupt the boot process:
+   - Press 'e' on the GRUB 2 boot screen.
+
+2. Modify the kernel boot parameters:
+   - Locate the line starting with "linux".
+   - Go to the end of the line.
+   - Add "rd.break" to the end.
+
+3. Start the system with modified parameters:
+   - Press Ctrl+x.
+
+4. Remount the file system as writable:
+   - Run: `mount -o remount,rw /sysroot`
+
+5. Enter the chroot environment:
+   - Run: `chroot /sysroot`
+
+6. Reset the root password:
+   - Run: `passwd`
+   - Follow the instructions and provide the new root password.
+
+7. Enable SELinux relabeling on next boot:
+   - Run: `touch /.autorelabel`
+
+8. Exit the chroot environment:
+   - Run: `exit`
+
+9. Exit the switch_root prompt:
+   - Run: `exit`
+
+
+
+LOGIN : as root user 
+
+ls -l -Z /etc/shadow
+restorecon /etc/shadow
+ls -l -Z /etc/shadow
+
+The command "ls -l -Z /etc/shadow" is used to list detailed information about the `/etc/shadow` file in Linux, including the security context of the file.
+
+Here's a breakdown of the command:
+
+- `ls`: The command to list files and directories.
+- `-l`: A command-line option to display detailed information about files, including permissions, ownership, size, and timestamps.
+- `-Z`: A command-line option to display the security context of the file. This is typically used in SELinux-enabled systems to show the SELinux security context of the file.
+
+`/etc/shadow` is a critical file in Linux that stores encrypted user passwords. It is readable only by the root user or users with administrative privileges. The command `ls -l -Z /etc/shadow` allows you to view the file's permissions, ownership, size, timestamps, and security context, providing valuable information about the security settings and access restrictions on the file.
+
+
+
+
+
+
+
+
